@@ -1,0 +1,8 @@
+@import "../../../assets/styles/mixins.scss";
+@import "../../../assets/styles/variables.scss";
+
+.header {
+	@include flex-between;
+	align-items: center;
+	padding: $spacing-md 0;
+}

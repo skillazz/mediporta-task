@@ -1,0 +1,11 @@
+@import "./variables.scss";
+
+@mixin container {
+	margin: 0 auto;
+	max-width: $container-width-regular;
+}
+
+@mixin flex-between {
+	display: flex;
+	justify-content: space-between;
+}
