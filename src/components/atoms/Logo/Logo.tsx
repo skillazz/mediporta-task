@@ -1,9 +1,9 @@
+import { CONTENT } from "../../../content";
+
 export const Logo = () => {
 	return (
 		<figure>
-			<a>
-				<img src="https://www.mediporta.pl/wp-content/themes/mediporta/images/logo2.png" />
-			</a>
+			<img src={CONTENT.logoSrc} />
 		</figure>
 	);
 };

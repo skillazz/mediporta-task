@@ -5,9 +5,14 @@
 	@include flex-between;
 	align-items: center;
 	padding: $spacing-md;
+	border-bottom: 1px solid $light-blue;
+
+	.title,
+	.date {
+		font-weight: 700;
+	}
 
 	.title {
 		text-transform: uppercase;
-		font-weight: 700;
 	}
 }

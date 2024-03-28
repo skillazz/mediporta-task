@@ -1,1 +1,8 @@
 @import "../../assets/styles/mixins.scss";
+@import "../../assets/styles/variables.scss";
+
+.wrapper {
+	padding: $spacing-xl 0;
+	position: relative;
+	width: 100%;
+}
