@@ -4,5 +4,10 @@
 .header {
 	@include flex-between;
 	align-items: center;
-	padding: $spacing-md 0;
+	padding: $spacing-md;
+
+	.title {
+		text-transform: uppercase;
+		font-weight: 700;
+	}
 }

@@ -1,3 +1,8 @@
+import { DateTime } from "ts-luxon";
+
 export const Footer = () => {
-	return <footer>Footer</footer>;
+	const currentYear = DateTime.now().toFormat("yyyy");
+	const copyrightSymbol = `\u00A9`;
+
+	return <footer>{copyrightSymbol + currentYear}</footer>;
 };

@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { Homepage } from "./pages/Homepage.tsx";
+import { Homepage } from "./pages/Homepage/Homepage.tsx";
 import "./assets/styles/main.scss";
 import { StrictMode } from "react";
 import "@fontsource/roboto";

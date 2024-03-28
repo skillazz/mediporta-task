@@ -6,5 +6,12 @@ html {
 }
 body {
 	@include container;
+
 	color: $dark-blue;
+}
+
+main {
+	@include flex-col;
+	justify-content: space-between;
+	min-height: 100dvh;
 }
