@@ -1,13 +1,13 @@
-import { ParsedUrlQuery, encode, decode } from "querystring";
-
-export const attachUrlParams = (paramsToAdd: ParsedUrlQuery) => {
-	const currentUrlParams = decode(window.location.search.substring(1));
-	const mergedParams = {
-		...currentUrlParams,
-		...paramsToAdd
-	};
-	for (let key in mergedParams) {
-		if (mergedParams[key] === undefined) delete mergedParams[key];
+export const attachUrlParams = (paramsToAdd: Record<string, string>) => {
+	const urlParams = new URLSearchParams(window.location.search);
+	for (const key in paramsToAdd) {
+		urlParams.set(key, paramsToAdd[key]);
 	}
-	return encode(mergedParams);
+	const newUrlParamsString = urlParams.toString();
+	window.history.replaceState(
+		undefined,
+		"",
+		`${window.location.pathname}?${newUrlParamsString}`
+	);
+	return newUrlParamsString;
 };

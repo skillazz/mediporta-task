@@ -5,4 +5,10 @@
 	padding: $spacing-xl 0;
 	position: relative;
 	width: 100%;
+	@include container;
+
+	.error {
+		position: absolute;
+		top: 0;
+	}
 }

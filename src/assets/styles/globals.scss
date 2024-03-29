@@ -5,13 +5,11 @@ html {
 	font-family: "Roboto", sans-serif;
 }
 body {
-	@include container;
-
 	color: $dark-blue;
 }
 
 main {
 	@include flex-col;
-	justify-content: space-between;
+	gap: $spacing-xl;
 	min-height: 100dvh;
 }
