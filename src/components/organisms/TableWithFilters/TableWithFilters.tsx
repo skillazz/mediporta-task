@@ -6,15 +6,13 @@ import {
 	TableRow,
 	TableCell,
 	Paper,
-	Stack,
-	SelectChangeEvent
+	Stack
 } from "@mui/material";
-import { TABLE_COLUMNS } from "../../../constants";
+import { FILTER_DATA, TABLE_COLUMNS } from "../../../constants";
 import type { Tag } from "../../../types/Tags";
 import { FC } from "react";
 import TableFilters from "../../molecules/TableFilters/TableFilters";
 import { v4 as uuid } from "uuid";
-import { Order, SortBy } from "../../../types/Filters";
 import { attachUrlParams } from "../../../utils";
 
 interface IProps {
@@ -22,38 +20,24 @@ interface IProps {
 }
 
 export const TableWithFilters: FC<IProps> = ({ rows }) => {
-	const handleFilterChange = (event: SelectChangeEvent) => {
-		if (event.target.name === "sort") {
-			attachUrlParams({
-				sort: event.target.value
-			});
-		} else {
-			attachUrlParams({
-				order: event.target.value
-			});
-		}
+	const handleFilterChange = (name: string, value: string) => {
+		const paramsToAdd = { [name]: value };
+		attachUrlParams(paramsToAdd);
 	};
 
 	return (
 		<>
 			<Stack direction="row" spacing={2} justifyContent="flex-end">
-				<TableFilters
-					id={uuid()}
-					label="Sort by"
-					name="sort"
-					onChange={handleFilterChange}
-					items={Object.values(SortBy).map((value) => ({
-						value,
-						label: value
-					}))}
-				/>
-				<TableFilters
-					id={uuid()}
-					label="Order"
-					name="order"
-					onChange={handleFilterChange}
-					items={Object.values(Order).map((value) => ({ value, label: value }))}
-				/>
+				{FILTER_DATA.map(({ name, label, values }) => (
+					<TableFilters
+						key={name}
+						id={uuid()}
+						label={label}
+						name={name}
+						onChange={(event) => handleFilterChange(name, event.target.value)}
+						items={values.map((value) => ({ value, label: value }))}
+					/>
+				))}
 			</Stack>
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }}>
