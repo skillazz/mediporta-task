@@ -84,21 +84,17 @@ export const Homepage = () => {
 	}, [loading]);
 
 	return (
-		<section className={styles.wrapper}>
+		<section className={`${styles.wrapper} ${!loading ? styles.visible : ""}`}>
 			{error && (
-				<Alert severity="error" className={styles.error}>
+				<Alert severity="error" className={styles.errorbox}>
 					Error: {error}
 				</Alert>
 			)}
 
-			{loading && (
-				<div className={`${styles.overlay} ${loading ? styles.visible : ""}`}>
-					<CircularProgress
-						color="inherit"
-						size={150}
-						className={styles.loader}
-					/>
-				</div>
+			{!loading && (
+				<span className={styles.loader}>
+					<CircularProgress color="inherit" size={120} />
+				</span>
 			)}
 			{tags && tags.length > 0 && (
 				<>
