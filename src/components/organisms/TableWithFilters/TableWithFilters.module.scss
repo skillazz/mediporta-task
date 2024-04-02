@@ -1,0 +1,10 @@
+@import "../../../assets/styles/mixins.scss";
+@import "../../../assets/styles/variables.scss";
+
+.filter__stack.filter__stack {
+	display: flex;
+	gap: $spacing-md;
+	@include mobile {
+		flex-direction: column;
+	}
+}

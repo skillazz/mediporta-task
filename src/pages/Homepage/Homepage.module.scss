@@ -2,7 +2,7 @@
 @import "../../assets/styles/variables.scss";
 
 .wrapper {
-	padding: $spacing-xl 0;
+	padding: $spacing-xl $spacing-md;
 	position: relative;
 	width: 100%;
 	@include container;

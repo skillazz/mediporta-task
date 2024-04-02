@@ -19,6 +19,7 @@ import { ChangeEvent, FC } from "react";
 import { TableFilters } from "../../molecules/TableFilters/TableFilters";
 import { v4 as uuid } from "uuid";
 import { useSearchParams } from "react-router-dom";
+import styles from "./TableWithFilters.module.scss";
 
 interface IProps {
 	rows: Tag[];
@@ -54,9 +55,9 @@ export const TableWithFilters: FC<IProps> = ({ rows }) => {
 		<>
 			<Stack
 				direction="row"
-				spacing={2}
 				justifyContent="flex-end"
 				sx={{ marginBottom: 2 }}
+				className={styles.filter__stack}
 			>
 				<TextField
 					id={uuid()}
@@ -69,19 +70,20 @@ export const TableWithFilters: FC<IProps> = ({ rows }) => {
 					onChange={handleItemsPerPageChange}
 				/>
 				{FILTER_DATA.map(({ name, label, values }) => (
-					<TableFilters
-						key={name}
-						id={uuid()}
-						label={label}
-						name={name}
-						value={searchParams.get(name) ?? ""}
-						onChange={(event) => handleFilterChange(name, event.target.value)}
-						items={values.map((value) => ({ value, label: value }))}
-					/>
+					<div key={name}>
+						<TableFilters
+							id={uuid()}
+							label={label}
+							name={name}
+							value={searchParams.get(name) ?? ""}
+							onChange={(event) => handleFilterChange(name, event.target.value)}
+							items={values.map((value) => ({ value, label: value }))}
+						/>
+					</div>
 				))}
 			</Stack>
 			<TableContainer component={Paper} sx={{ marginBottom: 2 }}>
-				<Table sx={{ minWidth: 650 }}>
+				<Table sx={{ minWidth: 250 }}>
 					<TableHead>
 						<TableRow>
 							{TABLE_COLUMNS.map((column) => (

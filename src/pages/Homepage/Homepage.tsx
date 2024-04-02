@@ -7,6 +7,8 @@ import { Order, SortBy } from "../../types/Filters";
 import { useTagsContext } from "../../context/TagsContext";
 import { useSearchParams } from "react-router-dom";
 import { Stack, Pagination } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { DEFAULT_ITEMS_PER_PAGE } from "../../constants";
 
 export const Homepage = () => {
@@ -21,6 +23,8 @@ export const Homepage = () => {
 		setTotalItems
 	} = useTagsContext();
 	const [searchParams, setSearchParams] = useSearchParams();
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const currentPage = searchParams.has("page")
 		? Number(searchParams.get("page"))
 		: 1;
@@ -100,6 +104,7 @@ export const Homepage = () => {
 							count={totalPages}
 							variant="outlined"
 							shape="rounded"
+							siblingCount={isMobile ? -2 : undefined}
 							page={currentPage}
 							onChange={handlePageChange}
 						/>

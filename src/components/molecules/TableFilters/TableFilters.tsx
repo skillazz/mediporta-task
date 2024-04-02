@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import type { SelectMenuItem } from "../../../types/SelectMenuItem";
+import styles from "./TableFilters.module.scss";
 
 interface IProps {
 	id: string;
@@ -26,7 +27,7 @@ export const TableFilters: FC<IProps> = ({
 	value
 }) => {
 	return (
-		<FormControl sx={{ minWidth: 100 }}>
+		<FormControl sx={{ minWidth: 100 }} className={styles.wrapper}>
 			<InputLabel id={id}>{label}</InputLabel>
 			<Select
 				labelId={id}
