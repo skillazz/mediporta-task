@@ -19,13 +19,13 @@ To run this project, you need:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/skillazz/mediporta-task.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd your-repository
+   cd <folder-name>
    ```
 
 3. Install dependencies:
