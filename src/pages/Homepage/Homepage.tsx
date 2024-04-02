@@ -35,7 +35,11 @@ export const Homepage = () => {
 
 	const handlePageChange = (event: ChangeEvent<unknown>, page: number) => {
 		event.preventDefault();
-		setSearchParams({ ...searchParams, page: page.toString() });
+		setSearchParams((prevParams: URLSearchParams) => {
+			const newParams = new URLSearchParams(prevParams.toString());
+			newParams.set("page", page.toString());
+			return newParams;
+		});
 	};
 
 	useEffect(() => {
