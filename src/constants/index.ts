@@ -10,3 +10,5 @@ export const FILTER_DATA = [
 	{ name: "sort", label: "Sort by", values: Object.values(SortBy) },
 	{ name: "order", label: "Order", values: Object.values(Order) }
 ];
+
+export const DEFAULT_ITEMS_PER_PAGE = 15;

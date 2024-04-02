@@ -7,6 +7,29 @@
 	width: 100%;
 	@include container;
 
+	.overlay {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: $spacing-xxl;
+		left: 0;
+		right: 0;
+		background-color: rgba(0, 0, 0, 0.15);
+		opacity: 0;
+		transition: opacity 0.15s ease-in-out;
+
+		&.visible {
+			opacity: 1;
+		}
+
+		.loader {
+			position: absolute;
+			top: 25%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
 	.error {
 		position: absolute;
 		top: 0;

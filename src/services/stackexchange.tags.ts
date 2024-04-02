@@ -2,6 +2,7 @@ import axios from "axios";
 import { Tag } from "../types/Tags";
 import { v4 as uuid } from "uuid";
 import { Order, SortBy } from "../types/Filters";
+import { DEFAULT_ITEMS_PER_PAGE } from "../constants";
 
 const API_BASE_URL = "https://api.stackexchange.com/2.3";
 
@@ -17,14 +18,14 @@ interface IParams {
 interface TagsResponseData {
 	tags: Tag[];
 	currentPage: number;
-	totalPages: number;
+	totalItems: number;
 }
 
 export const getTags = async ({
 	order = Order.DESC,
 	sort = SortBy.POPULAR,
 	page = "1",
-	pagesize = "50",
+	pagesize = String(DEFAULT_ITEMS_PER_PAGE),
 	filter = "!nNPvSNVZBz",
 	site = "stackoverflow"
 }: IParams = {}): Promise<TagsResponseData> => {
@@ -45,7 +46,7 @@ export const getTags = async ({
 		return {
 			tags: tagsWithId,
 			currentPage: response.data.page,
-			totalPages: response.data.total
+			totalItems: response.data.total
 		};
 	} catch (error) {
 		throw new Error("Failed to fetch tags from StackOverflow API");

@@ -14,13 +14,27 @@ interface IProps {
 	name: string;
 	onChange: (event: SelectChangeEvent) => void;
 	items: SelectMenuItem[];
+	value: string;
 }
 
-const TableFilters: FC<IProps> = ({ id, label, onChange, name, items }) => {
+export const TableFilters: FC<IProps> = ({
+	id,
+	label,
+	onChange,
+	name,
+	items,
+	value
+}) => {
 	return (
 		<FormControl sx={{ minWidth: 100 }}>
 			<InputLabel id={id}>{label}</InputLabel>
-			<Select labelId={id} onChange={onChange} label={label} name={name}>
+			<Select
+				labelId={id}
+				onChange={onChange}
+				label={label}
+				name={name}
+				value={value}
+			>
 				{items.map((item, index) => (
 					<MenuItem key={`${item.value}_${index}`} value={item.value}>
 						{item.label}
@@ -30,5 +44,3 @@ const TableFilters: FC<IProps> = ({ id, label, onChange, name, items }) => {
 		</FormControl>
 	);
 };
-
-export default TableFilters;
