@@ -3,7 +3,7 @@
 
 .wrapper {
 	@include container;
-	padding: $spacing-xl 0;
+	padding: $spacing-xl $spacing-md;
 	position: relative;
 	width: 100%;
 	min-height: 50dvh;
