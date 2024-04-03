@@ -84,14 +84,14 @@ export const Homepage = () => {
 	}, [loading]);
 
 	return (
-		<section className={`${styles.wrapper} ${!loading ? styles.visible : ""}`}>
+		<section className={styles.wrapper}>
 			{error && (
 				<Alert severity="error" className={styles.errorbox}>
 					Error: {error}
 				</Alert>
 			)}
 
-			{!loading && (
+			{loading && (
 				<span className={styles.loader}>
 					<CircularProgress color="inherit" size={120} />
 				</span>
