@@ -64,7 +64,11 @@ export const TableWithFilters: FC<IProps> = ({ rows }) => {
 					label="Items per page"
 					type="number"
 					variant="outlined"
-					defaultValue={DEFAULT_ITEMS_PER_PAGE}
+					defaultValue={
+						searchParams.has("pagesize")
+							? searchParams.get("pagesize")
+							: DEFAULT_ITEMS_PER_PAGE
+					}
 					InputProps={{ inputProps: { min: 1, max: 100 } }}
 					sx={{ minWidth: 120 }}
 					onChange={handleItemsPerPageChange}

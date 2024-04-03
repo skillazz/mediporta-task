@@ -40,6 +40,10 @@ export const Homepage = () => {
 			newParams.set("page", page.toString());
 			return newParams;
 		});
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
 	};
 
 	useEffect(() => {
@@ -104,7 +108,8 @@ export const Homepage = () => {
 							count={totalPages}
 							variant="outlined"
 							shape="rounded"
-							siblingCount={isMobile ? -2 : undefined}
+							boundaryCount={isMobile ? 0 : 1}
+							siblingCount={isMobile ? 1 : undefined}
 							page={currentPage}
 							onChange={handlePageChange}
 						/>
